@@ -1,0 +1,23 @@
+{
+  "name": "node-express-typescript-app",
+  "version": "1.0.0",
+  "description": "node app with express, decorators, validation, decorators, datasources and network",
+  "main": "app.js",
+  "author": "Sabás Mendívil",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon --exec ts-node -r tsconfig-paths/register src/app.ts",
+    "build": "tsc",
+    "build:start": "tsc && node dist/app.js",
+    "start": "node dist/app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "tsconfig-paths": "^4.1.2",
+    "typescript": "^4.9.4"
+  }
+}
