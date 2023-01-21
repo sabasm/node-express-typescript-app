@@ -1,12 +1,10 @@
-import { Router } from 'express';
-import { Request, Response } from 'express';
+import { RequestHandler } from 'express';
 import { BaseRouter } from '../classes/baseRouter';
 //TODO import controllers and export to index.ts
 
 export class CarsRouter extends BaseRouter {
-    // protected router: Router;
-    constructor(basePath: string, Controller: any) {
-        super(basePath);
+    constructor(basePath: string, middleware: RequestHandler[], Controller: any) {
+        super(basePath, middleware);
         this.get(Controller);
         this.post(Controller);
         this.put(Controller);

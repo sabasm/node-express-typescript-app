@@ -1,9 +1,6 @@
 //import controllers
-import RootController from './root.controller';
-import UserController from './user.controller';
-
+import carsController from "./cars.controller"
 //export controllers
-export default {
-    RootController,
-    UserController
+export {
+    carsController
 }
