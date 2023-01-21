@@ -23,7 +23,6 @@ export class UserRoutesHandler {
     }
 
     public getRoutes() {
-        console.log('user.router: ', this.router)
         return this.router;
     }
 }
