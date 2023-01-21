@@ -1,5 +1,7 @@
 import root from './root.route'
+import { UserRoutesHandler } from './user.route';
 
 export default [
-    root
+    root,
+    new UserRoutesHandler().getRoutes()
 ];

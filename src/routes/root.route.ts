@@ -5,12 +5,12 @@ import RootController from '../controllers/root.controller';
 const router = Router();
 const rootController = new RootController();
 
-router.use(RootRoutes.ROOT, (req, _res, next) => {
-    req.baseUrl = RootRoutes.ROOT;
+router.use(RootRoutes.INDEX, (req, _res, next) => {
+    req.baseUrl = RootRoutes.INDEX;
     next();
 });
 
-router.get(RootRoutes.ROOT, rootController.index);
+router.get(RootRoutes.INDEX, rootController.index);
 router.get(RootRoutes.TWO, rootController.two);
 
 export default router;
