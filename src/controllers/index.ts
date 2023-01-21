@@ -1,6 +1,7 @@
+import { carController } from './cars.controller';
 //import controllers
-import carsController from "./cars.controller"
+
 //export controllers
 export {
-    carsController
+    carController
 }

@@ -1,35 +1,44 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
+import { ICarController } from '../interfaces';
 
-class Controller {
-    get(req: Request, res: Response): void {
-        console.log('put req params = ', req.params)
-        console.log('get one req body = ', req.body)
-        res.send("get route");
+//TODO this is still a test controller for the routes and interfaces probably will be injected and added decorators to it
+
+class CarController implements ICarController {
+    private cars: any[] = [{ id: 1, make: 'Toyota', model: 'Camry' }, { id: 2, make: 'Honda', model: 'Accord' }];
+
+    public getCars(req: Request, res: Response): void {
+        res.send('cars');
     }
-    getOne(req: Request, res: Response): void {
-        console.log('get one params = ', req.params)
-        console.log('get one body = ', req.body)
-        res.send("getOne route");
+
+    public getCarById(req: Request, res: Response): any {
+        console.log('carbyid params', req.params)
+        // const car = this.cars.find(c => c.id === parseInt(req.params.id));
+        // if (!car) return res.status(404).send('The car with the given ID was not found.');
+        // res.json(car);
+        res.send('car by id')
     }
-    post(req: Request, res: Response): void {
-        console.log('put req params = ', req.params)
-        console.log('get one req body = ', req.body)
-        res.send("post route");
+
+    public createCar(req: Request, res: Response): void {
+        const car = { id: this.cars.length + 1, make: req.body.make, model: req.body.model };
+        this.cars.push(car);
+        res.json(car);
     }
-    put(req: Request, res: Response): void {
-        console.log('put req params = ', req.params)
-        console.log('get one req body = ', req.body)
-        res.send('put params')
+
+    public updateCar(req: Request, res: Response): any {
+        const car = this.cars.find(c => c.id === parseInt(req.params.id));
+        if (!car) return res.status(404).send('The car with the given ID was not found.');
+        car.make = req.body.make;
+        car.model = req.body.model;
+        res.json(car);
     }
-    delete(req: Request, res: Response): void {
-        console.log('put req params = ', req.params)
-        console.log('get one req body = ', req.body)
-        res.send('delete route')
+
+    public deleteCar(req: Request, res: Response): any {
+        const car = this.cars.find(c => c.id === parseInt(req.params.id));
+        if (!car) return res.status(404).send('The car with the given ID was not found.');
+        const index = this.cars.indexOf(car);
+        this.cars.splice(index, 1);
+        res.json(car);
     }
 }
 
-export default Controller;
-
-const get = new Controller().get.bind(Controller)
-get;
-// controller.getOne({ params: { id: 1 } } as Request, { send: (data: any) => console.log(data) } as Response);
+export const carController = new CarController();

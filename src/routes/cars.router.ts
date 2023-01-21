@@ -1,31 +1,28 @@
 import { RequestHandler } from 'express';
 import { BaseRouter } from '../classes/baseRouter';
-//TODO import controllers
-
+import { ICarController } from '../interfaces';
+//TODO inject controller?
 export class CarsRouter extends BaseRouter {
     protected dynamicRoutes: SerialNumber;
 
-    constructor(basePath: string, Controller: any, middlewares: RequestHandler[]) {
+    constructor(basePath: string, controller: ICarController, middlewares: RequestHandler[]) {
         super(basePath, middlewares);
-        this.get(Controller);
-        this.post(Controller);
-        this.put(Controller);
-        this.delete(Controller);
+        this.get(controller.getCars);
+        this.post(controller.createCar);
+        this.put(controller.updateCar);
+        this.delete(controller.createCar);
 
         this.router = this.getRouter();
-        this.dynamicRoutes = new SerialNumber('/:serialNumber', Controller);
-        this.router.use('/:serialNumber', this.dynamicRoutes.getRouter());
-        this.dynamicRoutes = new SerialNumber('/:serialNumber', Controller);
+        this.dynamicRoutes = new SerialNumber('/:serialNumber', controller);
         this.router.use('/:serialNumber', this.dynamicRoutes.getRouter());
     }
 }
 
 class SerialNumber extends BaseRouter {
-    constructor(basePath: string, Controller: any, middlewares: RequestHandler[] = []) {
+    constructor(basePath: string, controller: ICarController, middlewares: RequestHandler[] = []) {
         super(basePath, middlewares);
-        this.get(Controller);
-        this.post(Controller);
-        this.put(Controller);
-        this.delete(Controller);
+        this.get(controller.getCarById);
+        this.put(controller.updateCar);
+        this.delete(controller.deleteCar);
     }
 }
