@@ -1,1 +1,1 @@
-export * from './carController.interface';
+export * from './cars.controller.interface';
