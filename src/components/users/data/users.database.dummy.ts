@@ -1,13 +1,9 @@
-export interface IUser {
-    id: number;
-    name: string;
-}
-
+import { IUser } from '../classes/user.class';
 export interface IDatabaseState {
     users: IUser[];
 }
 
-class DummyDatabase implements IDatabaseState {
+export default class UsersDB_dummy implements IDatabaseState {
     private state: IDatabaseState = {
         users: [
             {
@@ -41,5 +37,3 @@ class DummyDatabase implements IDatabaseState {
         return this.state.users[this.state.users.length - 1];
     }
 }
-
-export default new DummyDatabase();

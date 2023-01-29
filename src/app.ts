@@ -1,8 +1,9 @@
 import express, { Application, Request, Response, Router } from 'express';
 import http from 'http';
 import config from './config';
-import { loggerMiddleware } from './middleware';
-import { userRouter } from './classes/userRouter.class';
+import { loggerMiddleware } from './middlewares';
+import { usersRouter } from './components/users/router';
+
 
 class App {
     private app: Application;
@@ -28,7 +29,7 @@ class App {
                 message: 'Hello World!'
             });
         });
-        this.app.use(userRouter.getRouter());
+        this.app.use(usersRouter.getRouter());
     }
 
     public start(): void {
@@ -39,4 +40,4 @@ class App {
     }
 }
 
-export const app = new App();
+export default new App();

@@ -1,5 +1,6 @@
-import { IRouterBase, RouterBase } from "./routerBase.abstract.class";
-export class UserById extends RouterBase implements IRouterBase {
+import { IRouterBase, RouterBase } from "../../../classes";
+
+export default class UserById extends RouterBase implements IRouterBase {
     constructor(path: string) {
         super(path);
         this.router.use(path, this.getRouter());

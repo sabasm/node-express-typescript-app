@@ -8,7 +8,7 @@ export interface IDynamicRouterBase {
     delete(route: string, callback: RequestHandler): void;
 }
 
-export abstract class DynamicRouterBase implements IDynamicRouterBase {
+export default abstract class DynamicRouterBase implements IDynamicRouterBase {
     protected router: Router;
 
     constructor(middlewares?: RequestHandler[]) {

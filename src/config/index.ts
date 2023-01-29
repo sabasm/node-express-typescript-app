@@ -1,3 +1,10 @@
+//environment variables
+const environment = {
+    isProduction: process.env.NODE_ENV === 'production',
+    isDevelopment: process.env.NODE_ENV === 'development',
+    isTest: process.env.NODE_ENV === 'test'
+};
+
 //export basic config for express
 const express = {
     port: process.env.PORT || 3000,
@@ -14,6 +21,7 @@ const db = {
 
 //export all configs
 export default {
+    environment,
     express,
     db
 };

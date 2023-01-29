@@ -8,7 +8,7 @@ export interface IRouterBase {
     delete(callback: RequestHandler): void;
 }
 
-export abstract class RouterBase implements IRouterBase {
+export default abstract class RouterBase implements IRouterBase {
     protected router: Router;
     protected path: string;
 

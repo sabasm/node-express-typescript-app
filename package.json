@@ -7,10 +7,10 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "nodemon --exec ts-node -r tsconfig-paths/register src/index.ts",
+    "dev": "NODE_ENV=development nodemon --exec ts-node -r tsconfig-paths/register src/index.ts",
     "build": "tsc",
-    "build:start": "tsc && node dist/index.js",
-    "start": "node dist/index.js"
+    "build:start": "tsc && NODE_ENV=production node dist/index.js",
+    "start": "NODE_ENV=production node dist/index.js"
   },
   "dependencies": {
     "express": "^4.18.2",
