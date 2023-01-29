@@ -2,7 +2,8 @@ import express, { Application, Request, Response, Router } from 'express';
 import http from 'http';
 import config from './config';
 import { loggerMiddleware } from './middlewares';
-import { usersRouter } from './components/users/router';
+import { API, AUTH } from './routes';
+
 
 
 class App {
@@ -23,13 +24,10 @@ class App {
     }
 
     private routes(): void {
-        this.app.use('/', this.router);
-        this.router.get('/', (req: Request, res: Response) => {
-            res.status(200).send({
-                message: 'Hello World!'
-            });
+        //api routes
+        API.forEach((router) => {
+            this.app.use("/api", router.getRouter());
         });
-        this.app.use(usersRouter.getRouter());
     }
 
     public start(): void {
