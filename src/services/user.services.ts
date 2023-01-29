@@ -1,10 +1,10 @@
-import { injectable, inject } from 'inversify';
+import { autoInjectable } from 'tsyringe';
 import { IUser } from "../data/user.dummy.database";
 import { UsersRepository } from "../repositories/users.repository";
 
-@injectable()
+@autoInjectable()
 export class UserService {
-    constructor(@inject(UsersRepository) private readonly _userRepository: UsersRepository) { }
+    constructor(private readonly _userRepository: UsersRepository) { }
 
     async getAllUsers(): Promise<IUser[]> {
         return await this._userRepository.getAll();

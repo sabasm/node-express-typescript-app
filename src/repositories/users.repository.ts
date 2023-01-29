@@ -1,8 +1,5 @@
-import { injectable } from "inversify";
 import userDummyDatabase, { IUser } from "../data/user.dummy.database";
 
-
-@injectable()
 export class UsersRepository {
     async getAll(): Promise<IUser[]> {
         return this._db.users;

@@ -1,11 +1,10 @@
-import { inject } from "inversify";
-import { controller, httpGet } from "inversify-express-utils";
+import { autoInjectable } from 'tsyringe';
 import { UserService } from '../services/user.services';
 // import { UsersRepository } from '../repositories/users.repository';
 
-@controller("/users")
-export class UserController {
-    constructor(@inject(UserService) private readonly _userService: UserService) { }
+@autoInjectable()
+export default class UserController {
+    constructor(private readonly _userService: UserService) { }
 
     async store(req: { body: { name: string; }; }, res: any) {
         try {
@@ -15,7 +14,6 @@ export class UserController {
         }
     }
 
-    @httpGet("/")
     async index() {
         try {
             return (await this._userService.getAllUsers());
@@ -24,5 +22,3 @@ export class UserController {
         }
     }
 }
-
-// export default new UserController(new UserService(new UsersRepository()));

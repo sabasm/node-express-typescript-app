@@ -1,17 +1,16 @@
+import { container } from 'tsyringe';
 import { IRouterBase, RouterBase } from './routerBase.abstract.class';
 import { UserById } from './singleUser.class';
-// import userController from '../controllers/user.controller';
-import container from '../containers/users.container';
+import UserController from '../controllers/user.controller';
 
 class UserRouter extends RouterBase implements IRouterBase {
     protected userById: UserById;
-    controller: any;
+    protected controller:any = container.resolve(UserController);
 
     constructor(basePath: string = '/users') {
         super(basePath);
         this.userById = new UserById('/:id');
         this.router.use('/:id',this.userById.getRouter());
-        this.controller = container.get('UserController');
 
         this.get(async (_req, res) => {
             return res.json(await this.controller.index());
