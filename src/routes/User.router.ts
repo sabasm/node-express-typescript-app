@@ -1,5 +1,5 @@
 import { RequestHandler } from 'express';
-import { BaseRouter } from '../classes/baseRouter';
+import { BaseRouter } from '../classes/routerBase.abstract.class';
 //TODO import controllers and export to index.ts
 
 export class CarsRouter extends BaseRouter {

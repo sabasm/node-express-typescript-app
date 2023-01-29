@@ -1,4 +1,5 @@
-import server from './server';
+import "reflect-metadata";
+import { app } from './app';
 
 //start the server
-server;
+app.start();

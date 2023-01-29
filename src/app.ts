@@ -1,17 +1,42 @@
-//basic express app with typescript
-import express from 'express';
-import routes from './routes';
+import express, { Application, Request, Response, Router } from 'express';
+import http from 'http';
+import config from './config';
+import { loggerMiddleware } from './middleware';
+import { userRouter } from './classes/userRouter.class';
 
-const app = express();
+class App {
+    private app: Application;
+    private router: Router;
 
-//middlewares
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+    constructor() {
+        this.app = express();
+        this.router = Router();
+        this.config();
+        this.routes();
+    }
 
-//routes
-routes.API_Routes.forEach(routes => {
-    app.use('/api', routes);
-});
+    private config(): void {
+        this.app.use(express.json());
+        this.app.use(express.urlencoded({ extended: true }));
+        this.app.use(loggerMiddleware)
+    }
 
-//export the app
-export default app;
+    private routes(): void {
+        this.app.use('/', this.router);
+        this.router.get('/', (req: Request, res: Response) => {
+            res.status(200).send({
+                message: 'Hello World!'
+            });
+        });
+        this.app.use(userRouter.getRouter());
+    }
+
+    public start(): void {
+        const server: http.Server = http.createServer(this.app);
+        server.listen(config.express.port, () => {
+            console.log(`Server running at ${config.express.serverUrl}`);
+        });
+    }
+}
+
+export const app = new App();

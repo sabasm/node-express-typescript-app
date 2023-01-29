@@ -2,7 +2,9 @@ import { loggerMiddleware } from '../middleware';
 import { CarsRouter } from './cars.router';
 import { carController } from '../controllers';
 
-const cars = new CarsRouter('/cars', carController, [loggerMiddleware]).getRouter();
+const RouteMiddlewares = [loggerMiddleware];
+
+const cars = new CarsRouter('/cars', carController, RouteMiddlewares).getRouter();
 
 const API_Routes = [
     cars

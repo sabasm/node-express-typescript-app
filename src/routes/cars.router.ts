@@ -1,5 +1,5 @@
 import { RequestHandler } from 'express';
-import { BaseRouter } from '../classes/baseRouter';
+import { BaseRouter } from '../classes/routerBase.abstract.class';
 import { ICarController } from '../interfaces';
 //TODO inject controller?
 export class CarsRouter extends BaseRouter {
