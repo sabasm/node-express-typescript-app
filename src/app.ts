@@ -2,7 +2,7 @@ import express, { Application, Request, Response, Router } from 'express';
 import http from 'http';
 import config from './config';
 import { loggerMiddleware } from './middlewares';
-import { API, AUTH } from './routes';
+import { API, AUTH,  } from './routes';
 
 
 
@@ -24,6 +24,8 @@ class App {
     }
 
     private routes(): void {
+        this.app.use(AUTH.authRouter.getRouter());
+
         //api routes
         API.forEach((router) => {
             this.app.use("/api", router.getRouter());

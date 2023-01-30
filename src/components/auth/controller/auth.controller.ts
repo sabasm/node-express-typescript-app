@@ -1,8 +1,8 @@
-import { UsersServices, usersServices } from "../services";
+import { AuthServices, authServices } from "../services";
 import { Request, Response } from "express";
 
-export default class UsersController {
-    constructor(private readonly _userService: UsersServices = usersServices) { }
+export default class AuthController {
+    constructor(private readonly _userService: AuthServices = authServices) { }
 
     async store(req: Request, _res: Response) {
         try {

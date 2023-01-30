@@ -1,9 +1,9 @@
-import { usersServices } from '../services';
-import UsersController from './users.controller';
+import { authServices } from '../services';
+import AuthController from './auth.controller';
 
-const usersController = new UsersController(usersServices);
+const authController = new AuthController(authServices);
 
 export {
-    UsersController,
-    usersController
+    AuthController,
+    authController
 }

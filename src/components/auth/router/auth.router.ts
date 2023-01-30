@@ -1,15 +1,11 @@
 import { IRouterBase, RouterBase } from "../../../classes";
-import { UserById, userById } from ".";
-import { UsersController, usersController } from "../controller";
-import { UsersRoutes } from "../enums";
+import { AuthController, authController } from "../controller";
 
 export default class AuthRouter extends RouterBase implements IRouterBase {
-    protected userById: UserById = userById;
-    protected controller: UsersController = usersController;
+    protected controller: AuthController = authController;
 
     constructor(basePath: string) {
         super(basePath);
-        this.router.use(UsersRoutes.ID, this.userById.getRouter());
 
         this.get(async (_req, res) => {
             return res.json(await this.controller.index());

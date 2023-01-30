@@ -1,4 +1,4 @@
-import { IUser } from '../classes/user.class';
+import { IUser } from '../classes/auth.class';
 export interface IDatabaseState {
     users: IUser[];
 }

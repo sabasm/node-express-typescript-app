@@ -1,8 +1,8 @@
-import { IUser } from '../classes/user.class';
-import { UsersRepository, usersRepository } from '../repository';
+import { IUser } from '../classes/auth.class';
+import { AuthRepository, authRepository } from '../repository';
 
-export default class UsersServices {
-    constructor(private readonly _userRepository: UsersRepository = usersRepository) { }
+export default class AuthServices {
+    constructor(private readonly _userRepository: AuthRepository = authRepository) { }
 
     async getAllUsers(): Promise<IUser[]> {
         return await this._userRepository.getAll();

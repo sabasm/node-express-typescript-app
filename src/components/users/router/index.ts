@@ -6,6 +6,7 @@ const userById = new UserById(UsersRoutes.ID);
 const usersRouter = new UsersRouter(UsersRoutes.PATH);
 
 export {
+    UsersRoutes,
     UserById,
     userById,
     UsersRouter,

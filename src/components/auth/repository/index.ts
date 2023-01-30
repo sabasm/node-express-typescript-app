@@ -1,8 +1,8 @@
-import UsersRepository from './users.repository';
+import AuthRepository from './auth.repository';
 
-const usersRepository = new UsersRepository();
+const authRepository = new AuthRepository();
 
 export {
-    UsersRepository,
-    usersRepository
+    AuthRepository,
+    authRepository
 }

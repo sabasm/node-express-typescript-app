@@ -1,9 +1,9 @@
-import { usersRepository } from "../repository";
-import UsersServices from "./user.services";
+import { authRepository } from "../repository";
+import AuthServices from "./auth.services";
 
-const usersServices = new UsersServices(usersRepository);
+const authServices = new AuthServices(authRepository);
 
 export {
-    UsersServices,
-    usersServices
+    AuthServices,
+    authServices
 }

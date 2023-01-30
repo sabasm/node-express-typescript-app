@@ -1,5 +1,5 @@
 import config from '../../../config';
-import UsersDB_dummy from './users.database.dummy';
+import UsersDB_dummy from './auth.database.dummy';
 const { environment: env } = config
 
 let usersDB = new UsersDB_dummy();

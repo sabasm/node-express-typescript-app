@@ -1,13 +1,11 @@
-import AuthById from './auth.router.byId';
 import AuthRouter from './auth.router';
-import { UsersRoutes } from '../enums';
+import { AuthRoutes } from '../enums';
 
-const authById = new AuthById(UsersRoutes.ID);
-const authRouter = new AuthRouter(UsersRoutes.PATH);
+
+const authRouter = new AuthRouter(AuthRoutes.PATH);
 
 export {
-    AuthById,
-    authById,
+    AuthRoutes,
     AuthRouter,
     authRouter
 }

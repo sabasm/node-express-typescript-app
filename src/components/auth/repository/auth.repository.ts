@@ -1,7 +1,7 @@
-import { IUser } from '../classes/user.class';
+import { IUser } from '../classes/auth.class';
 import { usersDB } from '../data';
 
-export default class UsersRepository {
+export default class AuthRepository {
     async getAll(): Promise<IUser[]> {
         return this._db.users;
     }

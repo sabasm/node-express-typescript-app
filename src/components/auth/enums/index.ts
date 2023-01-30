@@ -1,5 +1,5 @@
-import { UsersRoutes } from './users.routes.enums';
+import { AuthRoutes } from './auth.routes.enums';
 
 export {
-    UsersRoutes
+    AuthRoutes
 }
